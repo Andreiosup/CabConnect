@@ -1,9 +1,11 @@
 
-
 import './globals.css'
 import { ClerkProvider } from '@clerk/nextjs'
 import { Titillium_Web } from 'next/font/google'
 import { Navbar } from '@/components/Navbar'
+import { SelectedCarAmountContext } from '@/context/selectedCarAmount'
+import CarAmountProvider from '@/components/CarAmountProvider'
+
 
 const ubuntu = Titillium_Web({ subsets: ['latin'], weight: '700' })
 
@@ -17,14 +19,16 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  
  
-
   return (
     <ClerkProvider>
       <html lang="en" className='h-[100vh]'>
         <body className={`${ubuntu.className} h-full`} >
+        <CarAmountProvider>
           <Navbar />
           {children}
+        </CarAmountProvider>
         </body>
       </html>
     </ClerkProvider>

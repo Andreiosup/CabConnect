@@ -14,14 +14,12 @@ export const POST = async (req: Request) => {
 
     
     try {
-        console.log(amount)
-        console.log(stripe)
+      
         const paymentIntent:any = await stripe.paymentIntents.create({
-            amount: amount, 
+            amount: Number(amount*100), 
             currency: 'usd'
         });
 
-        console.log(paymentIntent)
         return new NextResponse(JSON.stringify(paymentIntent.client_secret), {status:200});
     } catch (error) {
         console.log(error)

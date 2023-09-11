@@ -20,7 +20,7 @@ export default function Home() {
   const [pickupCoordinates, setPickupCoordinates] = useState<Coordinates>();
   const [destinationCoordinates, setDestinationCoordinates] = useState<Coordinates>();
   const [directionData, setDirectionData] = useState<any>();
-  const [selectedCarAmount,setSelectedCarAmount] = useState<number>()
+
 
   useEffect(() => {
     getUserLocation();
@@ -45,16 +45,16 @@ export default function Home() {
         <PickupCoordsContext.Provider value={{ pickupCoordinates, setPickupCoordinates }}>
           <DestinationCoordsContext.Provider value={{ destinationCoordinates, setDestinationCoordinates }}>
             <DirectionDataContext.Provider value={{ directionData, setDirectionData }}>
-              <SelectedCarAmountContext.Provider value={{ selectedCarAmount,setSelectedCarAmount}}>
-                <div className='grid grid-col-1 md:grid-cols-3'>
-                  <div>
-                    <Booking />
-                  </div>
-                  <div className="col-span-2 order-first md:order-last">
-                    <MapBoxMap />
-                  </div>
+
+              <div className='grid grid-col-1 md:grid-cols-3'>
+                <div>
+                  <Booking />
                 </div>
-              </SelectedCarAmountContext.Provider>
+                <div className="col-span-2 order-first md:order-last">
+                  <MapBoxMap />
+                </div>
+              </div>
+
             </DirectionDataContext.Provider>
           </DestinationCoordsContext.Provider>
         </PickupCoordsContext.Provider>

@@ -1,7 +1,7 @@
 import { Elements,useStripe,useElements, PaymentElement } from '@stripe/react-stripe-js'
 import { redirect } from 'next/navigation';
 
-const CheckoutForm = () => {
+const CheckoutForm = ({amount}:{amount: number}) => {
 
     const stripe = useStripe()
     const elements= useElements()
@@ -22,9 +22,7 @@ const CheckoutForm = () => {
         if (submitError) return;
         const response = await fetch("/api/create-intent", {
             method: "POST",
-            body: JSON.stringify({
-              amount: 557
-            })
+            body: JSON.stringify({amount})
         })
 
         const secretKey = await response.json()
