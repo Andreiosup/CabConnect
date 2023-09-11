@@ -35,7 +35,7 @@ const CheckoutForm = () => {
           clientSecret : secretKey,
           elements,
           confirmParams: {
-            return_url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000/",
+            return_url: "https://cab-connect.vercel.app",
           },
         });
     
